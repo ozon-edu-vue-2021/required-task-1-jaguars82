@@ -1,6 +1,6 @@
 'use strict';
 
-const action = document.querySelector('.action');
+const action = document.querySelector('.fetch');
 const templateImageCard = document.querySelector('#image');
 const templateImagePopup = document.querySelector('#popup-image');
 const container = document.querySelector('.images');
@@ -62,7 +62,7 @@ const showLoader = function () {
 const hideLoader = function () {
     loaderTimeout = setTimeout(function () {
         loader.style.visibility = 'hidden';
-        loaderTimeout.clearTimeout();
+        clearTimeout(loaderTimeout);
     }, 700);
 }
 
@@ -91,10 +91,10 @@ const renderPictures = function (list) {
         throw Error(`Pictures not defined. The list length: ${list.length}`);
     }
 
-    const clone = templateImageCard.content.cloneNode(true);
     const fragment = document.createDocumentFragment();
 
     list.forEach(function (element) {
+        const clone = templateImageCard.content.cloneNode(true);
         const link = clone.querySelector('a');
 
         link.href = element.url;
@@ -104,7 +104,7 @@ const renderPictures = function (list) {
         image.src = cropImage(element.download_url, 5);
         image.alt = element.author;
         image.classList.add('preview');
-        fragment.appendChild(clone)
+        fragment.appendChild(clone);
     });
 
     container.appendChild(fragment);
@@ -170,9 +170,9 @@ const actionHandler = function (evt) {
  */
 const imageHandler = function (evt) {
     evt.preventDefault();
-
-    if (evt.target.closest('a')) {
-        getPictureInfo(evt.target.dataset.id);
+    const aElem = evt.target.closest('a');
+    if (aElem) {
+        getPictureInfo(aElem.dataset.id);
     }
 }
 

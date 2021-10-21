@@ -9,7 +9,7 @@ body {
 img {
     width: 100%;
     max-width: 100%;
-    display: bloсk;
+    display: block;
 }
 
 a {
@@ -23,7 +23,7 @@ a:hover {
 button {
     display: block;
     border: none;
-    color: #fff;
+    color: #FFF;
     cursor: pointer;
     transition: 0.2s background-color;
 }
@@ -43,22 +43,22 @@ main {
     justify-content: center;
     flex-direction: column;
     padding: 50px;
-    background-color: #fff;
+    background-color: #FFF;
     box-sizing: border-box;
     border-radius: 6px;
     margin: 50px auto;
 }
 
 /* Action style */
-.action {
+.fetch {
     background-color: #66BB6A;
     font-size: 16px;
     padding: 10px 20px;
     border-radius: 6px;
-    margin: 10px 0;
+    margin: 10px auto;
 }
 
-.action:hover {
+.fetch:hover {
     background-color: #4CAF50;
 }
 
@@ -72,30 +72,25 @@ main {
     min-height: 400px;
 }
 
-a {
+a:not(.open) {
     display: inline-block;
+    line-height: 0;
     border-radius: 6px;
     overflow: hidden;
     width: 100%;
     min-height: 100px;
 }
 
-a:nth-child(n) {
+a:not(.open):nth-child(n) {
     background-color: #EFEBE9;
 }
 
-a:nth-child(2n) {
+a:not(.open):nth-child(2n) {
     background-color: #D7CCC8;
 }
 
-a:nth-child(3n) {
+a:not(.open):nth-child(3n) {
     background-color: #BCAAA4;
-}
-
-/* Popup style */
-.popup .content {
-    text-align: right;
-    column-count: initial;
 }
 
 figure {
@@ -113,10 +108,6 @@ figcaption {
     margin: 5px 0;
 }
 
-.content {
-    border-radius: 6px;
-}
-
 .popup {
     position: fixed;
     visibility: hidden;
@@ -126,14 +117,13 @@ figcaption {
     bottom: 0;
     right: 0;
     background-color: rgba(33, 33, 33, 0.5);
-    z-index: -1;
 }
 
 .popup.open {
     visibility: visible;
 }
 
-.action {
+.action.close {
     position: absolute;
     top: 50px;
     right: 50px;
@@ -150,11 +140,32 @@ figcaption {
     margin: auto;
     box-sizing: border-box;
     max-width: 600px;
-    background-color: #fff;
+    background-color: #FFF;
     border-radius: 6px;
     padding: 20px;
+    text-align: right;
+    column-count: initial;
 }
 
 .popup .link {
     display: inline;
+}
+
+/* Responsive style */
+@media (max-width: 860px) {
+    .content {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 700px) {
+    .content {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 550px) {
+    .content {
+        column-count: 1;
+    }
 }
