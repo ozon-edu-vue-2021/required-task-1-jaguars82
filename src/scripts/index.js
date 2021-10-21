@@ -1,6 +1,6 @@
 'use strict';
 
-const action = document.querySelector('.action');
+const action = document.querySelector('.fetch');
 const templateImageCard = document.querySelector('#image');
 const templateImagePopup = document.querySelector('#popup-image');
 const container = document.querySelector('.images');
@@ -170,8 +170,9 @@ const actionHandler = function (evt) {
  */
 const imageHandler = function (evt) {
     evt.preventDefault();
-    if (evt.target.closest('a')) {
-        getPictureInfo(evt.target.closest('a').dataset.id);
+    const aElem = evt.target.closest('a');
+    if (aElem) {
+        getPictureInfo(aElem.dataset.id);
     }
 }
 
